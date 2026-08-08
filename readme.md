@@ -108,8 +108,8 @@ AI-Web-Research-Agent/
 ├── .gitignore
 ├── README.md
 │
-├── .env                 # Not uploaded to GitHub
-├── .venv/               # Not uploaded to GitHub
+├── .env                 
+├── .venv/               
 │
 ├── research_report.md   # Generated output
 └── research_report.pdf  # Generated output
