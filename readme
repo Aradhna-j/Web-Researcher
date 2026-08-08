@@ -1,0 +1,283 @@
+# AI Web Research Agent
+
+An autonomous AI-powered web research agent built with Python and Google Gemini. The application searches the web, scrapes relevant webpages, analyzes information using Gemini, and automatically generates structured research reports in Markdown and PDF formats.
+
+## Features
+
+* Autonomous web research using AI
+* Google Gemini integration
+* DuckDuckGo web search
+* Automatic webpage scraping
+* Multi-step AI tool execution
+* Rate-limit handling with automatic retry
+* Structured research report generation
+* Markdown report export
+* PDF report generation using ReportLab
+* Environment-variable based API key management
+* Suitable for research, learning, market analysis, technology analysis, and general information gathering
+
+## How It Works
+
+The research agent follows a simple workflow:
+
+1. User enters a research topic.
+2. Gemini analyzes the research request.
+3. The AI decides when web search is required.
+4. DuckDuckGo is used to find relevant sources.
+5. Selected webpages are scraped using BeautifulSoup.
+6. The collected information is sent back to Gemini.
+7. Gemini analyzes the evidence and prepares a structured research report.
+8. The final report is exported as both Markdown and PDF.
+
+## Tech Stack
+
+* Python
+* Google Gemini API
+* Google GenAI SDK
+* DuckDuckGo Search
+* BeautifulSoup4
+* Requests
+* ReportLab
+* python-dotenv
+
+## Project Structure
+
+```text
+Web Researcher/
+│
+├── app.py
+├── requirements.txt
+├── .gitignore
+├── .env
+│
+├── research_report.md
+└── research_report.pdf
+```
+
+The `.env` file contains the Gemini API key and should never be uploaded to GitHub.
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+```
+
+Move into the project directory:
+
+```bash
+cd YOUR_REPOSITORY
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv .venv
+```
+
+### Activate the virtual environment
+
+Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+Windows CMD:
+
+```cmd
+.venv\Scripts\activate
+```
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Alternatively:
+
+```bash
+pip install google-genai python-dotenv requests beautifulsoup4 ddgs reportlab
+```
+
+## Gemini API Setup
+
+Create a Gemini API key from Google AI Studio.
+
+Create a `.env` file inside the project folder:
+
+```text
+.env
+```
+
+Add your API key:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+Do not hard-code or upload your API key publicly.
+
+## .gitignore
+
+Make sure your `.gitignore` contains:
+
+```gitignore
+.env
+.venv/
+__pycache__/
+*.pyc
+research_report.md
+research_report.pdf
+```
+
+## Run the Project
+
+Start the application:
+
+```bash
+python app.py
+```
+
+You will see:
+
+```text
+AI Web Research Agent
+
+Enter research topic:
+```
+
+Enter any topic, for example:
+
+```text
+Minimum skills required to get an entry-level Agentic AI job
+```
+
+The agent will automatically research the topic and generate the final report.
+
+## Output
+
+After successful execution, the application generates:
+
+```text
+research_report.md
+research_report.pdf
+```
+
+The Markdown file contains the raw structured research report, while the PDF provides a formatted version suitable for reading and sharing.
+
+## Example Research Topics
+
+You can research topics such as:
+
+* Latest developments in Agentic AI
+* Skills required for an AI Engineer
+* Future of Generative AI
+* Solid-state battery commercialization
+* AI trends in healthcare
+* Comparison of modern LLM frameworks
+* Emerging technologies in 2026
+* Career opportunities in artificial intelligence
+
+## Rate Limit Handling
+
+Gemini API free-tier accounts may have request-per-minute limits.
+
+The application includes automatic handling for:
+
+```text
+429 RESOURCE_EXHAUSTED
+```
+
+When the API rate limit is reached, the program detects the error, waits for the recommended retry period, and retries automatically.
+
+The agent is also designed to minimize unnecessary searches and Gemini API requests.
+
+## Research Agent Architecture
+
+```text
+User Research Topic
+        |
+        v
+Google Gemini
+        |
+        v
+Tool Decision
+   /          \
+  v            v
+Web Search   Web Scraper
+  |            |
+  +-----+------+
+        |
+        v
+Collected Web Evidence
+        |
+        v
+Gemini Analysis
+        |
+        v
+Structured Research Report
+      /       \
+     v         v
+ Markdown     PDF
+```
+
+## Future Improvements
+
+Possible future improvements include:
+
+* Interactive web interface
+* FastAPI or Flask backend
+* Source reliability scoring
+* Parallel web research
+* More advanced agentic workflows
+* Research history
+* Multiple AI model support
+* Citation verification
+* Database integration
+* Export to DOCX
+* Research depth selection
+* Streaming research progress
+* Deployment as a web application
+
+## Use Cases
+
+This project can be useful for:
+
+* Students
+* Researchers
+* Developers
+* Business analysts
+* AI learners
+* Technology researchers
+* Market research
+* Career research
+* Competitive analysis
+
+## Security
+
+Never expose API keys in source code.
+
+Keep sensitive information inside:
+
+```text
+.env
+```
+
+and ensure `.env` is included in `.gitignore`.
+
+If an API key is accidentally uploaded to GitHub, revoke it immediately and create a new one.
+
+## Disclaimer
+
+The reports generated by this project are AI-assisted and depend on information retrieved from third-party websites. Important information should always be independently verified before being used for academic, professional, financial, legal, or other high-impact decisions.
+
+## License
+
+This project is intended for educational and portfolio purposes.
+
+## Author
+
+Developed as a Python and Agentic AI project demonstrating autonomous tool usage, web research, LLM integration, and automated report generation.
