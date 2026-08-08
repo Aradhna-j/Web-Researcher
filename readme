@@ -1,128 +1,181 @@
-# AI Web Research Agent
+<div align="center">
 
-An autonomous AI-powered web research agent built with Python and Google Gemini. The application searches the web, scrapes relevant webpages, analyzes information using Gemini, and automatically generates structured research reports in Markdown and PDF formats.
+# 🔎 AI Web Research Agent
 
-## Features
+### Autonomous Web Research powered by Google Gemini
 
-* Autonomous web research using AI
-* Google Gemini integration
-* DuckDuckGo web search
-* Automatic webpage scraping
-* Multi-step AI tool execution
-* Rate-limit handling with automatic retry
-* Structured research report generation
-* Markdown report export
-* PDF report generation using ReportLab
-* Environment-variable based API key management
-* Suitable for research, learning, market analysis, technology analysis, and general information gathering
+An intelligent **Agentic AI research assistant** that autonomously searches the web, extracts relevant information, analyzes multiple sources, and generates professional research reports in **Markdown and PDF**.
 
-## How It Works
+![Python](https://img.shields.io/badge/Python-3.12+-blue?logo=python\&logoColor=white)
+![Gemini](https://img.shields.io/badge/Google-Gemini_AI-4285F4?logo=google\&logoColor=white)
+![Agentic AI](https://img.shields.io/badge/Agentic-AI-purple)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-The research agent follows a simple workflow:
+</div>
 
-1. User enters a research topic.
-2. Gemini analyzes the research request.
-3. The AI decides when web search is required.
-4. DuckDuckGo is used to find relevant sources.
-5. Selected webpages are scraped using BeautifulSoup.
-6. The collected information is sent back to Gemini.
-7. Gemini analyzes the evidence and prepares a structured research report.
-8. The final report is exported as both Markdown and PDF.
+---
 
-## Tech Stack
+## ✨ Overview
 
-* Python
-* Google Gemini API
-* Google GenAI SDK
-* DuckDuckGo Search
-* BeautifulSoup4
-* Requests
-* ReportLab
-* python-dotenv
+**AI Web Research Agent** demonstrates how an LLM can act as an autonomous agent rather than simply answering a prompt.
 
-## Project Structure
+The agent can decide when it needs external information, call web-search and scraping tools, analyze the retrieved evidence, and generate a structured final research report.
 
 ```text
-Web Researcher/
+Research Topic
+      ↓
+   Gemini AI
+      ↓
+ Tool Decision
+   ↙       ↘
+Search    Scrape
+   ↘       ↙
+ Web Evidence
+      ↓
+ AI Analysis
+      ↓
+Research Report
+   ↙       ↘
+Markdown   PDF
+```
+
+---
+
+## 🚀 Features
+
+* 🤖 **Agentic AI Workflow** — Gemini autonomously decides when tools are required
+* 🔎 **Web Search** — Searches the web using DuckDuckGo
+* 🌐 **Web Scraping** — Extracts useful information using BeautifulSoup
+* 🧠 **AI Analysis** — Gemini analyzes information collected from multiple sources
+* 🔄 **Multi-Step Tool Calling** — Supports autonomous search → scrape → analyze workflows
+* ⏳ **Automatic Rate-Limit Handling** — Handles Gemini `429 RESOURCE_EXHAUSTED` errors
+* 📑 **Structured Reports** — Generates organized research reports
+* 📝 **Markdown Export** — Saves reports as `.md`
+* 📄 **PDF Export** — Creates formatted PDFs using ReportLab
+* 🔐 **Secure API Management** — Gemini API key stored using environment variables
+
+---
+
+## 🧠 How It Works
+
+```mermaid
+flowchart TD
+    A[User Research Topic] --> B[Gemini AI Agent]
+    B --> C{Need External Information?}
+
+    C -->|Yes| D[Search Web]
+    D --> E[DuckDuckGo Results]
+
+    E --> F[Select Relevant Sources]
+    F --> G[Scrape Webpages]
+
+    G --> H[Extract Web Evidence]
+    H --> B
+
+    C -->|Enough Evidence| I[Analyze Research]
+
+    I --> J[Generate Structured Report]
+
+    J --> K[Markdown Report]
+    J --> L[PDF Report]
+```
+
+The agent continues its research loop until it has enough information to generate the final report.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology        | Purpose               |
+| ----------------- | --------------------- |
+| 🐍 Python         | Core application      |
+| ✨ Google Gemini   | LLM + agent reasoning |
+| 🔎 DDGS           | Web search            |
+| 🍲 BeautifulSoup4 | Web scraping          |
+| 🌐 Requests       | HTTP requests         |
+| 📄 ReportLab      | PDF generation        |
+| 🔐 python-dotenv  | API key management    |
+
+---
+
+## 📂 Project Structure
+
+```text
+AI-Web-Research-Agent/
 │
 ├── app.py
 ├── requirements.txt
 ├── .gitignore
-├── .env
+├── README.md
 │
-├── research_report.md
-└── research_report.pdf
+├── .env                 # Not uploaded to GitHub
+├── .venv/               # Not uploaded to GitHub
+│
+├── research_report.md   # Generated output
+└── research_report.pdf  # Generated output
 ```
 
-The `.env` file contains the Gemini API key and should never be uploaded to GitHub.
+---
 
-## Installation
+## ⚙️ Installation
 
-Clone the repository:
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+git clone https://github.com/YOUR_USERNAME/AI-Web-Research-Agent.git
 ```
-
-Move into the project directory:
 
 ```bash
-cd YOUR_REPOSITORY
+cd AI-Web-Research-Agent
 ```
 
-Create a virtual environment:
+### 2. Create a virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-### Activate the virtual environment
+### 3. Activate it
 
-Windows PowerShell:
+**Windows PowerShell**
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-Windows CMD:
+**Windows CMD**
 
 ```cmd
 .venv\Scripts\activate
 ```
 
-Install the required dependencies:
+### 4. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Alternatively:
+---
 
-```bash
-pip install google-genai python-dotenv requests beautifulsoup4 ddgs reportlab
-```
+## 🔑 Gemini API Setup
 
-## Gemini API Setup
+Get a Gemini API key from **Google AI Studio**.
 
-Create a Gemini API key from Google AI Studio.
-
-Create a `.env` file inside the project folder:
+Create:
 
 ```text
 .env
 ```
 
-Add your API key:
+Add:
 
 ```env
-GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_API_KEY=your_api_key_here
 ```
 
-Do not hard-code or upload your API key publicly.
+> ⚠️ Never upload your `.env` file or API key to GitHub.
 
-## .gitignore
-
-Make sure your `.gitignore` contains:
+Your `.gitignore` should include:
 
 ```gitignore
 .env
@@ -133,151 +186,202 @@ research_report.md
 research_report.pdf
 ```
 
-## Run the Project
+---
 
-Start the application:
+## ▶️ Run
+
+Start the research agent:
 
 ```bash
 python app.py
 ```
 
-You will see:
+Then enter your research topic:
 
 ```text
+============================================
 AI Web Research Agent
+============================================
 
 Enter research topic:
 ```
 
-Enter any topic, for example:
+For example:
 
 ```text
-Minimum skills required to get an entry-level Agentic AI job
+Minimum skills required to get an Agentic AI job
 ```
 
-The agent will automatically research the topic and generate the final report.
+The agent will autonomously begin researching.
 
-## Output
+---
 
-After successful execution, the application generates:
+## 🔄 Agent Workflow
+
+The core workflow is:
 
 ```text
-research_report.md
-research_report.pdf
+User
+ │
+ │ Research Topic
+ ▼
+┌─────────────────────┐
+│   Gemini AI Agent   │
+└──────────┬──────────┘
+           │
+           │ Tool Calling
+           ▼
+┌─────────────────────┐
+│     Web Search      │
+│        DDGS         │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│    Web Scraping     │
+│  BeautifulSoup      │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Evidence Collection │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   Gemini Analysis   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│   Research Report   │
+└──────────┬──────────┘
+           │
+       ┌───┴───┐
+       ▼       ▼
+   Markdown   PDF
 ```
 
-The Markdown file contains the raw structured research report, while the PDF provides a formatted version suitable for reading and sharing.
+---
 
-## Example Research Topics
+## 📊 Example Research Topics
 
-You can research topics such as:
+```text
+Latest developments in Agentic AI
 
-* Latest developments in Agentic AI
-* Skills required for an AI Engineer
-* Future of Generative AI
-* Solid-state battery commercialization
-* AI trends in healthcare
-* Comparison of modern LLM frameworks
-* Emerging technologies in 2026
-* Career opportunities in artificial intelligence
+Skills required to become an AI Engineer
 
-## Rate Limit Handling
+AI trends in healthcare
 
-Gemini API free-tier accounts may have request-per-minute limits.
+Future of autonomous AI agents
 
-The application includes automatic handling for:
+Solid-state battery commercialization
+
+AI adoption in financial services
+
+Comparison of modern AI agent frameworks
+```
+
+---
+
+## ⏳ Rate-Limit Protection
+
+Gemini free-tier APIs can enforce request limits.
+
+The application automatically detects:
 
 ```text
 429 RESOURCE_EXHAUSTED
 ```
 
-When the API rate limit is reached, the program detects the error, waits for the recommended retry period, and retries automatically.
+Instead of immediately crashing, the agent waits for the API retry window and attempts the request again.
 
-The agent is also designed to minimize unnecessary searches and Gemini API requests.
+The research workflow also limits unnecessary searches and tool cycles to reduce API consumption.
 
-## Research Agent Architecture
+---
+
+## 🗺️ Roadmap
+
+Future improvements:
+
+* 🌐 Web-based user interface
+* ⚡ FastAPI backend
+* 🔗 Automatic citation verification
+* 📚 Research history
+* 🧠 Multiple LLM support
+* 📊 Source reliability scoring
+* 🔍 Deep Research mode
+* 💾 Database integration
+* 📃 DOCX export
+* ⚙️ Configurable research depth
+* 🚀 Cloud deployment
+
+---
+
+## 🎯 What This Project Demonstrates
+
+This project demonstrates practical knowledge of:
 
 ```text
-User Research Topic
-        |
-        v
-Google Gemini
-        |
-        v
-Tool Decision
-   /          \
-  v            v
-Web Search   Web Scraper
-  |            |
-  +-----+------+
-        |
-        v
-Collected Web Evidence
-        |
-        v
-Gemini Analysis
-        |
-        v
-Structured Research Report
-      /       \
-     v         v
- Markdown     PDF
+Python
+      +
+LLM APIs
+      +
+Function Calling
+      +
+Tool Use
+      +
+Web Search
+      +
+Web Scraping
+      +
+Agent Loops
+      +
+Error Handling
+      +
+Report Generation
+      =
+Agentic AI Application
 ```
 
-## Future Improvements
+---
 
-Possible future improvements include:
+## 🔒 Security
 
-* Interactive web interface
-* FastAPI or Flask backend
-* Source reliability scoring
-* Parallel web research
-* More advanced agentic workflows
-* Research history
-* Multiple AI model support
-* Citation verification
-* Database integration
-* Export to DOCX
-* Research depth selection
-* Streaming research progress
-* Deployment as a web application
+API keys are loaded through environment variables rather than hard-coded into the application.
 
-## Use Cases
-
-This project can be useful for:
-
-* Students
-* Researchers
-* Developers
-* Business analysts
-* AI learners
-* Technology researchers
-* Market research
-* Career research
-* Competitive analysis
-
-## Security
-
-Never expose API keys in source code.
-
-Keep sensitive information inside:
+Never commit:
 
 ```text
 .env
 ```
 
-and ensure `.env` is included in `.gitignore`.
+If an API key is accidentally pushed to a public repository, revoke it immediately and generate a new key.
 
-If an API key is accidentally uploaded to GitHub, revoke it immediately and create a new one.
+---
 
-## Disclaimer
+## ⚠️ Disclaimer
 
-The reports generated by this project are AI-assisted and depend on information retrieved from third-party websites. Important information should always be independently verified before being used for academic, professional, financial, legal, or other high-impact decisions.
+AI-generated research may contain inaccuracies or rely on third-party web content. Important information should be independently verified before being used for professional, academic, financial, legal, or other high-impact decisions.
 
-## License
+---
 
-This project is intended for educational and portfolio purposes.
+## 🤝 Contributing
 
-## Author
+Contributions, suggestions, and improvements are welcome.
 
-Developed as a Python and Agentic AI project demonstrating autonomous tool usage, web research, LLM integration, and automated report generation.
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push the branch
+5. Open a Pull Request
+
+---
+
+<div align="center">
+
+### ⭐ If you find this project useful, consider giving it a star!
+
+**Built with Python 🐍 + Gemini ✨ + Agentic AI 🤖**
+
+</div>
